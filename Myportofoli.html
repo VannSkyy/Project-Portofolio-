@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Naffi Fajri Salam Pradana | Mahasiswa Global Institute Tangerang</title>
+    <meta name="description" content="Portofolio resmi Naffi Fajri Salam Pradana, mahasiswa S1 Teknik Informatika di Global Institute Tangerang.">
+    <meta name="author" content="Naffi Fajri Salam Pradana">
+
+    <!-- Font Awesome Ikon Sosmed (Gantiin SVG Biar Tidak Error) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: system-ui, -apple-system, sans-serif; }
+        html { scroll-behavior: smooth; }
+        :root { 
+            --bg: #0f172a; 
+            --card: #1e293b; 
+            --primary: #38bdf8; 
+            --text: #f8fafc; 
+            --sub: #94a3b8; 
+            --border: #334155; 
+            --accent: #2563eb;
+        }
+        
+        body { background: var(--bg); color: var(--text); line-height: 1.6; padding-bottom: 0; overflow-x: hidden; }
+        
+        .reveal { opacity: 0; transform: translateY(35px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        header { 
+            background: rgba(15, 23, 42, 0.85); 
+            border-bottom: 1px solid var(--border); 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .nav { max-width: 1000px; margin: 0 auto; padding: 0.9rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+        
+        .logo-box { display: flex; align-items: center; gap: 0.6rem; }
+        .logo-avatar {
+            width: 35px; height: 35px;
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            color: #ffffff; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 0.95rem;
+            box-shadow: 0 2px 10px rgba(56, 189, 248, 0.3);
+        }
+        .logo-name { font-weight: 700; font-size: 1rem; color: #ffffff; }
+        .logo-name span { color: var(--primary); }
+
+        .nav-links { display: flex; gap: 1.2rem; list-style: none; }
+        .nav-links a { color: var(--sub); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+        
+        .container { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem; }
+        
+        /* Hero Section & Foto Beranimasi */
+        .hero { padding: 3rem 0 2rem; text-align: left; }
+        .hero-content { display: flex; flex-direction: column-reverse; gap: 2rem; align-items: center; }
+        .hero-text { flex: 1.2; }
+        
+        .badge-status { 
+            display: inline-flex; align-items: center; gap: 0.5rem; 
+            background: rgba(56, 189, 248, 0.1); color: var(--primary); 
+            padding: 0.4rem 0.9rem; border-radius: 20px; font-size: 0.85rem; 
+            font-weight: 600; border: 1px solid rgba(56, 189, 248, 0.2); margin-bottom: 1.2rem;
+        }
+        .pulse { width: 8px; height: 8px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 8px var(--primary); }
+        .hero h1 { font-size: 2.1rem; line-height: 1.25; margin-bottom: 1rem; color: #ffffff; }
+        .hero h1 span { color: var(--primary); }
+        .hero p { color: var(--sub); font-size: 1.05rem; max-width: 680px; margin-bottom: 1.8rem; }
+        
+        .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn { padding: 0.75rem 1.4rem; border-radius: 8px; font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: 0.3s; }
+        .btn-primary { background: var(--accent); color: white; }
+        .btn-primary:hover { background: #1d4ed8; }
+        .btn-secondary { background: var(--card); color: var(--text); border: 1px solid var(--border); }
+        .btn-secondary:hover { background: #334155; }
+
+        /* Style Animasi Foto */
+        .hero-image-wrapper {
+            position: relative; width: 200px; height: 200px; flex-shrink: 0;
+            animation: floatImage 4s ease-in-out infinite;
+        }
+        .hero-image-glowing-back {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 105%; height: 105%; border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            opacity: 0.35; filter: blur(15px); z-index: 1;
+        }
+        .hero-image {
+            position: relative; width: 100%; height: 100%; border-radius: 50%;
+            object-fit: cover; border: 3px solid var(--primary);
+            box-shadow: 0 8px 30px rgba(56, 189, 248, 0.2); z-index: 2;
+            transition: all 0.5s ease;
+        }
+        .hero-image-wrapper:hover .hero-image { transform: scale(1.05) rotate(3deg); border-color: #ffffff; }
+
+        @keyframes floatImage {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        section { margin-bottom: 3.5rem; }
+        .section-title { font-size: 1.4rem; color: #ffffff; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.6rem; }
+        .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+
+        /* Slider Pendidikan */
+        .edu-slider-wrapper {
+            position: relative; overflow: hidden; border-radius: 16px;
+            background: var(--card); border: 1px solid var(--border);
+            padding: 1.5rem 0 1rem;
+        }
+        .edu-track { display: flex; transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1); }
+        .edu-slide { min-width: 100%; padding: 0.5rem 2.8rem 1rem 2.8rem; box-sizing: border-box; }
+        .edu-slide-badge {
+            display: inline-block; background: rgba(56, 189, 248, 0.15); color: var(--primary);
+            font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.7rem; border-radius: 6px;
+            margin-bottom: 0.8rem; border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+        .edu-slide h3 { font-size: 1.2rem; color: #ffffff; margin-bottom: 0.3rem; }
+        .edu-slide .sub-title { color: var(--primary); font-weight: 600; font-size: 0.9rem; margin-bottom: 0.4rem; }
+        .edu-location { color: var(--sub); font-size: 0.85rem; margin-bottom: 0.6rem; }
+        .edu-desc { color: var(--sub); font-size: 0.9rem; line-height: 1.6; }
+
+        .edu-btn {
+            position: absolute; top: 50%; transform: translateY(-60%);
+            background: rgba(15, 23, 42, 0.85); color: #ffffff; border: 1px solid var(--border);
+            width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1rem;
+            display: flex; align-items: center; justify-content: center; z-index: 10; transition: 0.3s;
+        }
+        .edu-btn:hover { background: var(--accent); border-color: var(--accent); }
+        .edu-btn.prev { left: 8px; }
+        .edu-btn.next { right: 8px; }
+
+        .edu-dots { display: flex; justify-content: center; gap: 8px; margin-top: 1rem; padding-bottom: 0.5rem; }
+        .edu-dot { width: 9px; height: 9px; background: var(--border); border-radius: 50%; cursor: pointer; transition: 0.3s; }
+        .edu-dot.active { background: var(--primary); width: 22px; border-radius: 10px; }
+
+        /* Social Media Button (Font Awesome Clean Icons) */
+        .social-intro-text { color: var(--sub); font-size: 0.95rem; margin-bottom: 1.2rem; }
+        .social-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem; }
+        .social-btn {
+            display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+            background: #0f172a; border: 1px solid var(--border); color: var(--text);
+            padding: 0.75rem 1rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600;
+            text-decoration: none; transition: all 0.3s ease;
+        }
+        .social-btn i { font-size: 1.2rem; }
+        .social-btn:hover { transform: translateY(-3px); border-color: var(--primary); color: var(--primary); }
+
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; }
+        .skill-tag { display: inline-block; background: #0f172a; color: var(--primary); padding: 0.35rem 0.75rem; border-radius: 6px; font-size: 0.82rem; font-weight: 600; margin: 0.2rem; border: 1px solid var(--border); }
+        .project-card h4 { font-size: 1.1rem; color: #ffffff; margin-bottom: 0.4rem; }
+        .project-card p { color: var(--sub); font-size: 0.88rem; margin-bottom: 1rem; }
+        
+        footer { text-align: center; padding: 2rem 1rem; background: #090d16; color: var(--sub); font-size: 0.85rem; border-top: 1px solid var(--border); width: 100%; }
+
+        @media (min-width: 600px) {
+            .hero h1 { font-size: 2.8rem; }
+            .hero-content { flex-direction: row; gap: 4rem; }
+            .hero-image-wrapper { width: 260px; height: 260px; }
+            .edu-slide { padding: 0.5rem 3.5rem 1rem 3.5rem; }
+            .edu-btn.prev { left: 14px; }
+            .edu-btn.next { right: 14px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav">
+            <div class="logo-box">
+                <div class="logo-avatar">NF</div>
+                <div class="logo-name">Naffi<span>.dev</span></div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#education">Pendidikan</a></li>
+                <li><a href="#projects">Proyek</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <!-- Hero Section -->
+        <div class="hero reveal" id="about">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="badge-status">
+                        <span class="pulse"></span> Active Student & Developer
+                    </div>
+                    <h1>Halo! Saya <span>Naffi Fajri Salam Pradana</span></h1>
+                    <p>
+                        Saya adalah mahasiswa di <strong>Global Institute (Institut Teknologi dan Bisnis Bina Sarana Global) Tangerang</strong>. Memiliki ketertarikan kuat dalam pengembangan Web, logika pemrograman Python, dan perancangan basis data SQL.
+                    </p>
+                    <div class="btn-group">
+                        <a href="#projects" class="btn btn-primary">Lihat Proyek</a>
+                        <a href="#education" class="btn btn-secondary">Riwayat Pendidikan</a>
+                    </div>
+                </div>
+                
+                <!-- Foto Beranimasi Mengambang -->
+                <div class="hero-image-wrapper">
+                    <div class="hero-image-glowing-back"></div>
+                    <img src="https://i.ibb.co.com/twykRgYt/1000106037.jpg
+" alt="Foto Naffi Fajri" class="hero-image">
+                </div>
+            </div>
+        </div>
+
+        <!-- Section Education Slider -->
+        <section id="education" class="reveal">
+            <h2 class="section-title">🎓 Riwayat Pendidikan</h2>
+            
+            <div class="edu-slider-wrapper">
+                <button class="edu-btn prev" onclick="prevEduSlide()">❮</button>
+                <button class="edu-btn next" onclick="nextEduSlide()">❯</button>
+
+                <div class="edu-track" id="eduTrack">
+                    <div class="edu-slide">
+                        <span class="edu-slide-badge">PENDIDIKAN TINGGI (SEKARANG)</span>
+                        <h3>Institut Teknologi dan Bisnis Bina Sarana Global (Global Institute)</h3>
+                        <div class="sub-title">S1 - Teknik Informatika / Computer Science</div>
+                        <p class="edu-location">📍 Kota Tangerang, Banten</p>
+                        <p class="edu-desc">Fokus pada Software Engineering, Struktur Data & Algoritma (Python), Perancangan Basis Data Relasional (SQL & Normalisasi Database UNF hingga 3NF), serta Responsive Web Development.</p>
+                    </div>
+
+                    <div class="edu-slide">
+                        <span class="edu-slide-badge">SEKOLAH MENENGAH KEJURUAN</span>
+                        <h3>SMK Tunas Pemuda Rajeg</h3>
+                        <div class="sub-title">Rekayasa Perangkat Lunak (RPL)</div>
+                        <p class="edu-location">📍 Rajeg, Kab. Tangerang</p>
+                        <p class="edu-desc">Di sinilah titik awal ketertarikan mendalam saya terhadap dunia teknologi komputer. Mempelajari dasar-dasar algoritma pemrograman, logika software, pembuatan web HTML/CSS, serta fondasi utama perancangan sistem.</p>
+                    </div>
+
+                    <div class="edu-slide">
+                        <span class="edu-slide-badge">SEKOLAH MENENGAH PERTAMA</span>
+                        <h3>SMP Mutiara Insan Nusantara Rajeg</h3>
+                        <div class="sub-title">Pendidikan Menengah Pertama</div>
+                        <p class="edu-location">📍 Rajeg, Kab. Tangerang</p>
+                        <p class="edu-desc">Masa eksplorasi penting dalam membangun pemikiran logis, kedisiplinan akademik, serta interaksi sosial. Mulai aktif mengenal penggunaan perangkat komputer untuk belajar.</p>
+                    </div>
+
+                    <div class="edu-slide">
+                        <span class="edu-slide-badge">SEKOLAH DASAR</span>
+                        <h3>SDN Tanah Tinggi 9 Kota Tangerang</h3>
+                        <div class="sub-title">Pendidikan Dasar</div>
+                        <p class="edu-location">📍 Kota Tangerang, Banten</p>
+                        <p class="edu-desc">Fondasi awal pendidikan dasar tempat saya membentuk kebiasaan belajar, matematika dasar, serta rasa ingin tahu yang tinggi terhadap ilmu pengetahuan dan dunia digital.</p>
+                    </div>
+                </div>
+
+                <div class="edu-dots" id="eduDots">
+                    <span class="edu-dot active" onclick="goEduSlide(0)"></span>
+                    <span class="edu-dot" onclick="goEduSlide(1)"></span>
+                    <span class="edu-dot" onclick="goEduSlide(2)"></span>
+                    <span class="edu-dot" onclick="goEduSlide(3)"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Keahlian -->
+        <section id="skills" class="reveal">
+            <h2 class="section-title">⚡ Keahlian & Teknologi</h2>
+            <div class="card">
+                <p style="color: var(--sub); font-size: 0.9rem; margin-bottom: 0.8rem;">Teknologi dan tools yang sering saya gunakan dalam pengembangan proyek:</p>
+                <div>
+                    <span class="skill-tag">HTML5 & CSS3</span>
+                    <span class="skill-tag">JavaScript (ES6+)</span>
+                    <span class="skill-tag">Python Development</span>
+                    <span class="skill-tag">SQL & Relational DB</span>
+                    <span class="skill-tag">Database Normalization</span>
+                    <span class="skill-tag">Responsive Web Design</span>
+                    <span class="skill-tag">Git & GitHub</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Proyek -->
+        <section id="projects" class="reveal">
+            <h2 class="section-title">💻 Proyek Yang Pernah Dibuat</h2>
+            <div class="grid-2">
+                <div class="card project-card">
+                    <h4>📌 Web Portal Informasi & Ulasan Warga</h4>
+                    <p>Web portal independen responsif dengan fitur slider foto otomatis, integrasi Google Maps, dan sistem ulasan interaktif berbasis LocalStorage.</p>
+                    <div>
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS Grid/Flexbox</span>
+                        <span class="skill-tag">JavaScript</span>
+                    </div>
+                </div>
+
+                <div class="card project-card">
+                    <h4>🎮 System Console Rental Logic (Python)</h4>
+                    <p>Program kalkulasi rental berbasis logika Python yang mengolah durasi sewa, validasi input, kontrol perulangan, dan penanganan exception handling.</p>
+                    <div>
+                        <span class="skill-tag">Python 3</span>
+                        <span class="skill-tag">CLI Application</span>
+                        <span class="skill-tag">Algoritma</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Kontak & Sosmed -->
+        <section id="contact" class="reveal">
+            <h2 class="section-title">🌐 Media Sosial & Kontak</h2>
+            <div class="card">
+                <p class="social-intro-text">Kalian bisa mengunjungi sosial media saya melalui tautan di bawah ini:</p>
+                
+                <div class="social-container">
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-btn">
+                        <i class="fa-brands fa-github"></i> GitHub
+                    </a>
+                    
+                    <a href="https://instagram.com/itsvanskyy" target="_blank" rel="noopener noreferrer" class="social-btn">
+                        <i class="fa-brands fa-instagram"></i> Instagram
+                    </a>
+
+                    <a href="https://tiktok.com/@vansky_san" target="_blank" rel="noopener noreferrer" class="social-btn">
+                        <i class="fa-brands fa-tiktok"></i> TikTok
+                    </a>
+
+                    <a href="https://www.youtube.com/@VanSky_San" target="_blank" rel="noopener noreferrer" class="social-btn">
+                        <i class="fa-brands fa-youtube"></i> YouTube
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Naffi Fajri Salam Pradana — Mahasiswa Global Institute Tangerang. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const reveals = document.querySelectorAll('.reveal');
+        function checkReveal() {
+            reveals.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (elementTop < windowHeight - 50 && elementTop > -el.offsetHeight + 50) {
+                    el.classList.add('active');
+                } else {
+                    el.classList.remove('active');
+                }
+            });
+        }
+        window.addEventListener('scroll', checkReveal);
+        window.addEventListener('load', checkReveal);
+
+        let eduIndex = 0;
+        const eduTrack = document.getElementById('eduTrack');
+        const eduDots = document.querySelectorAll('.edu-dot');
+        const totalEdu = eduDots.length;
+
+        function updateEduSlider() {
+            if (eduTrack) {
+                eduTrack.style.transform = `translateX(-${eduIndex * 100}%)`;
+            }
+            eduDots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === eduIndex);
+            });
+        }
+
+        function nextEduSlide() {
+            eduIndex = (eduIndex + 1) % totalEdu;
+            updateEduSlider();
+        }
+
+        function prevEduSlide() {
+            eduIndex = (eduIndex - 1 + totalEdu) % totalEdu;
+            updateEduSlider();
+        }
+
+        function goEduSlide(i) {
+            eduIndex = i;
+            updateEduSlider();
+        }
+    </script>
+</body>
+</html>
